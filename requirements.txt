@@ -3,4 +3,6 @@
 pip
 PyNaCl
 opuslib
-nextcord==2.4.1
+nextcord
+python-dotenv
+humanfriendly
