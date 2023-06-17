@@ -1,6 +1,5 @@
 # Requirements for discord bot
 
-pip
 PyNaCl
 opuslib
 nextcord

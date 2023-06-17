@@ -1,20 +1,12 @@
-FROM python:3.10.11-alpine
+FROM alpine:latest
 
-LABEL Maintainer="PapierPain, Skilldus, Sinus Torvalds"
+LABEL Maintainer="PapierPain"
 LABEL Description="Discord container with Nextcord"
 
 WORKDIR /bot
 
-RUN apk add --no-cache \
-    gcc \
-    musl-dev \
-    ffmpeg \
-    python3-dev \
-    libffi-dev \
-    libressl-dev \
-    libsodium-dev \
-    opus \
-    opus-dev
-
 COPY requirements.txt /bot
-RUN SODIUM_INSTALL=system python3 -m pip install -r requirements.txt
+
+RUN apk add --update --no-cache gcc musl-dev ffmpeg python3 py3-pip python3-dev libffi-dev libressl-dev libsodium-dev opus opus-dev && \
+    SODIUM_INSTALL=system python3 -m pip install -r requirements.txt --no-cache-dir && \
+    rm requirements.txt
