@@ -1,22 +1,3 @@
-variables:
-  VERSION:
-    value: $CI_COMMIT_REF_SLUG
-    description: Nom de la version
 
 include:
-  - project: 'labo/cicd-templates'
-    ref: master
-    file:
-      - '/templates/build-docker.gitlab-ci.yml'
-
-build-docker:
-  extends: .template-build-docker
-  variables:
-    DOCKERFILE: Dockerfile
-
-workflow:
-  name: 💥 $VERSION - (╯°□°)╯︵ ┻━┻ 💥
-  rules:
-    - if: $CI_PIPELINE_SOURCE == "web"
-      when: always
-    - when: never
+  - component: $COMPONENTS/docker/docker-build@1.0.0
